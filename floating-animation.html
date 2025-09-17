@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Love</title>
+
+    <style>
+        /* Mengatur dasar halaman */
+        body {
+            margin: 0;
+            overflow: hidden; /* Menyembunyikan scrollbar */
+            background-color: #ea87f3; /* Warna latar belakang biru gelap */
+            height: 100vh;
+        }
+
+        /* Gaya untuk setiap elemen hati */
+        .heart {
+            position: absolute;
+            bottom: -10vh; /* Mulai dari luar layar bawah */
+            opacity: 0;
+            font-size: 2rem; /* Ukuran dasar hati */
+            color: #ff69b4; /* Warna hati pink cerah */
+            
+            /* Menerapkan animasi yang kita definisikan di bawah */
+            animation: floatUp 5s linear forwards;
+        }
+
+        /* Mendefinisikan animasi keyframes */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(450deg); /* Bergerak ke atas sambil berputar */
+                opacity: 0;
+            }
+        }
+    </style>
+    </head>
+<body>
+
+    <script>
+        /**
+         * Fungsi untuk membuat satu elemen hati.
+         */
+        function createHeart() {
+            // 1. Membuat elemen <div> baru di memori
+            const heart = document.createElement('div');
+            
+            // 2. Menambahkan kelas 'heart' agar styling CSS bisa diterapkan
+            heart.classList.add('heart');
+            
+            // 3. Mengisi elemen dengan emoji hati. Anda bisa ganti dengan '💖', '💕', dll.
+            heart.innerText = '❤️';
+            
+            // --- Memberikan properti acak untuk variasi ---
+            
+            // Mengatur posisi horizontal acak (dari 0% hingga 100% lebar layar)
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            // Mengatur durasi animasi acak (antara 4 hingga 8 detik)
+            // Ini membuat beberapa hati bergerak lebih lambat dari yang lain
+            heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            
+            // Mengatur ukuran font acak (antara 1rem hingga 3rem)
+            heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+            
+            // 4. Menambahkan elemen hati yang sudah jadi ke dalam <body>
+            document.body.appendChild(heart);
+            
+            // 5. Membersihkan elemen dari HTML setelah animasinya selesai
+            // Ini penting untuk menjaga performa agar halaman tidak melambat
+            setTimeout(() => {
+                heart.remove();
+            }, 8000); // Hapus setelah 8 detik (sesuai durasi animasi maksimal)
+        }
+
+        /**
+         * Menjalankan fungsi createHeart secara berulang-ulang
+         * Angka 300 berarti fungsi akan dipanggil setiap 300 milidetik.
+         * Ubah ke angka lebih kecil untuk hati lebih banyak, atau lebih besar untuk lebih sedikit.
+         */
+        setInterval(createHeart, 300);
+    </script>
+    </body>
+</html>

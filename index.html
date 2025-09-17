@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=DM+Serif+Display:ital@0;1&family=Dancing+Script:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style-letter.css">
+        <title>To Diah</title>
+        <style>
+        /* Mengatur dasar halaman */
+        body {
+            margin: 0;
+            overflow: hidden; /* Menyembunyikan scrollbar */
+            background-color: #ea87f3; /* Warna latar belakang biru gelap */
+            height: 100vh;
+        }
+
+        /* Gaya untuk setiap elemen hati */
+        .h {
+            position: absolute;
+            bottom: -10vh; /* Mulai dari luar layar bawah */
+            opacity: 0;
+            font-size: 2rem; /* Ukuran dasar hati */
+            color: #ff69b4; /* Warna hati pink cerah */
+            
+            /* Menerapkan animasi yang kita definisikan di bawah */
+            animation: floatUp 5s linear forwards;
+        }
+
+        /* Mendefinisikan animasi keyframes */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(450deg); /* Bergerak ke atas sambil berputar */
+                opacity: 0;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <p class="instruction">Click the heart!</p>
+        <div class="container">
+            <label>
+            <div class="heart">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg"></img>
+            </div>
+            <input id="messageState" type="checkbox" style="display:none"/>
+            </label>
+            <div class="message">
+                <h1 style="font-family: Cinzel, serif; font-size: 40px; letter-spacing: 1.2px;">To Diah,</h1>
+                <p> 
+                    <span>
+                        &emsp; I don't know what you're going through, but i just wanted to remind you that tough days dont last forever. Sometimes, life feels like tired, alone, or even want to give up. That feeling doesn't make you weak, it's proof that you've been fighting incredibly hard. Don't let that sense of loneliness deceive you. The strength you hold is far greater than any doubt you feel.
+                    </span>
+                    <br> <br>
+                    <span>
+                        &emsp;  Look at how far you've come. Every small step you take, every morning you get up despite feeling tired, is proof of your unyielding spirit. That spirit exists within you. Don't let it fade. taking care of yourself, take a rest when you need to, and remember all the amazing things you have already been through. you're stronger than you think, and brighter days are on their way.  hang in there and be kind to yourself, you're doing better than you might realize. you've got this! keep fighting, ganbatte, jiayou, semangattt Diah!!!
+                    </span>      
+                </p>
+                <br>
+                <div class="sincere">
+                    <p style="font-weight: bold;"> With Pleasure,</p>
+                    <p>Your Friend</p>
+                 </div>
+            </div>
+        </div>
+        
+        <script>
+        /**
+         * Fungsi untuk membuat satu elemen hati.
+         */
+        function createHeart() {
+            // 1. Membuat elemen <div> baru di memori
+            const heart = document.createElement('div');
+            
+            // 2. Menambahkan kelas 'heart' agar styling CSS bisa diterapkan
+            heart.classList.add('h');
+            
+            // 3. Mengisi elemen dengan emoji hati. Anda bisa ganti dengan '💖', '💕', dll.
+            heart.innerText = '❤️';
+            
+            // --- Memberikan properti acak untuk variasi ---
+            
+            // Mengatur posisi horizontal acak (dari 0% hingga 100% lebar layar)
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            // Mengatur durasi animasi acak (antara 4 hingga 8 detik)
+            // Ini membuat beberapa hati bergerak lebih lambat dari yang lain
+            heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            
+            // Mengatur ukuran font acak (antara 1rem hingga 3rem)
+            heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+            
+            // 4. Menambahkan elemen hati yang sudah jadi ke dalam <body>
+            document.body.appendChild(heart);
+            
+            // 5. Membersihkan elemen dari HTML setelah animasinya selesai
+            // Ini penting untuk menjaga performa agar halaman tidak melambat
+            setTimeout(() => {
+                heart.remove();
+            }, 8000); // Hapus setelah 8 detik (sesuai durasi animasi maksimal)
+        }
+
+        /**
+         * Menjalankan fungsi createHeart secara berulang-ulang
+         * Angka 300 berarti fungsi akan dipanggil setiap 300 milidetik.
+         * Ubah ke angka lebih kecil untuk hati lebih banyak, atau lebih besar untuk lebih sedikit.
+         */
+        setInterval(createHeart, 300);
+        </script>
+        <script src="jquery.js"></script>
+        <script src="jquery2.1.js"></script>
+        <script defer src="letter-animation.js"></script>
+    </body>
+</html>
+
